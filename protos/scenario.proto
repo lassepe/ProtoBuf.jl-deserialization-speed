@@ -19,7 +19,7 @@ syntax = "proto2";
 
 package waymo.open_dataset;
 
-import "waymo_open_dataset/protos/map.proto";
+import "map.proto";
 
 message ObjectState {
   // Coordinates of the center of the object bounding box.
@@ -50,7 +50,7 @@ message ObjectState {
 // The object states for a single object through the scenario.
 message Track {
   enum ObjectType {
-    TYPE_UNSET = 0;  // This is an invalid state that indicates an error.
+    TYPE_UNSET = 0; // This is an invalid state that indicates an error.
     TYPE_VEHICLE = 1;
     TYPE_PEDESTRIAN = 2;
     TYPE_CYCLIST = 3;
@@ -138,5 +138,4 @@ message Scenario {
   // submissions. This field is populated in the training set only as a
   // suggestion of objects to train on.
   repeated RequiredPrediction tracks_to_predict = 11;
-
 }

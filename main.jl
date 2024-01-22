@@ -2,12 +2,13 @@ import ProtoBuf
 import BenchmarkTools
 import ProfileView
 
-include("./protos_jl/waymo.jl")
-import .waymo.Protos
+include("./protos_jl/waymo/waymo.jl")
+using .waymo: open_dataset
 
 function read_example_proto()
     open("./data/example.pbbin", "r") do io
-        ProtoBuf.readproto(io, Protos.Scenario())
+        decoder = ProtoBuf.ProtoDecoder(io)
+        ProtoBuf.decode(decoder, open_dataset.Scenario)
     end
 end
 
